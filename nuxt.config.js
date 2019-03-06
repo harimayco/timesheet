@@ -29,7 +29,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#000' },
 
   /*
   ** Global CSS
@@ -77,6 +77,17 @@ module.exports = {
     */
     extend(config, ctx) {
       
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        automaticNameDelimiter: '.',
+        name: undefined,
+        cacheGroups: {}
+      }
+    },
+    splitChunks: {
+      layouts: true
     }
   }
 }
