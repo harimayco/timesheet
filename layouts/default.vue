@@ -1,12 +1,12 @@
 <template>
-	<v-app class="lime lighten-5">
+	<v-app class="blue lighten-5">
 
 		<v-container grid-list-md >
 			<v-layout row wrap elevation-4 light class="white">
 				<v-flex xs12 id="header">
 					 <v-img src="/head.png" contain ></v-img>
 				</v-flex>
-				<v-flex xs12 class="grey darken-3">
+				<v-flex xs12 class="grey darken-3" v-if="$auth.loggedIn">
 					<v-layout
 				      justify-center
 				      row
@@ -14,49 +14,49 @@
 				    >
 				    	<v-menu offset-y>
 				    		<template v-slot:activator="{ on }">
-						<nuxt-link to="/"><v-btn
+						<nuxt-link to="/" exact><v-btn
 					        color="white"
 					        flat
-					        round
+					        
 					      >Home</v-btn></nuxt-link>
 
-					      <v-btn
+					      <nuxt-link to="/inspire"><v-btn
 					        color="white"
 					        flat
-					        round
-					      >Add new</v-btn>
+					        
+					      >Add new</v-btn></nuxt-link>
+
+					      <nuxt-link to="/staff-list"><v-btn
+					        color="white"
+					        flat
+					        
+					      >Staff List</v-btn></nuxt-link>
 
 					      <v-btn
 					        color="white"
 					        flat
-					        round
-					      >Staff List</v-btn>
-
-					      <v-btn
-					        color="white"
-					        flat
-					        round
+					        
 					      >Change Password</v-btn>
 
 					      <v-btn
 					        color="white"
 					        flat
-					        round
+					        
 					      >View Summary Workload</v-btn>
 
 					      <v-btn
 					        color="white"
 					        flat
-					        round 
+					         
 					        v-on="on"
 					      >
 					      	<v-avatar
-          :tile="tile"
+          
           :size="30"
           color="grey lighten-4"
         >
           <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
-        </v-avatar> &nbsp;&nbsp; Hi, Avasoft user
+        </v-avatar> &nbsp;&nbsp; Hi, {{ $auth.user.name }}
 					      </v-btn>
 					  </template>
 
@@ -69,7 +69,7 @@
 				       <v-list-tile
 				          @click=""
 				        >
-				          <v-list-tile-title>Logout</v-list-tile-title>
+				          <v-list-tile-title @click="$auth.logout()">Logout</v-list-tile-title>
 
 				        </v-list-tile>
 				      </v-list>

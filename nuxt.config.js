@@ -1,10 +1,15 @@
 const pkg = require('./package')
-
+const baseApiUrl = 'http://timesheet-api.local';
+const appName = 'Timesheet';
 
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
   mode: 'universal',
+  env: {
+    baseApiUrl: baseApiUrl,
+    appName: appName
+  },
 
   /*
   ** Headers of the page
@@ -29,7 +34,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#000' },
+  loading: { color: 'green' },
 
   /*
   ** Global CSS
@@ -42,7 +47,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    '@/plugins/vuetify',
+    '~/plugins/axios'
   ],
 
   /*
@@ -52,12 +58,31 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
+
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      callback: '/login'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth', method: 'post', propertyName: 'data.access_token' },
+          logout: { url: '/auth', method: 'delete' },
+          user: { url: '/users/me', method: 'get', propertyName: false }
+        },
+      }
+    }
+  },
+
   /*
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: baseApiUrl
   },
 
   /*
@@ -89,5 +114,9 @@ module.exports = {
     splitChunks: {
       layouts: true
     }
-  }
+  },
+  router: {
+    middleware: ['auth']
+  },
+
 }
