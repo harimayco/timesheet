@@ -61,11 +61,11 @@
 					  </template>
 
 					  <v-list>
-				        <v-list-tile
+				        <nuxt-link to="/edit-profile"><v-list-tile
 				          @click=""
 				        >
 				          <v-list-tile-title>Edit profile</v-list-tile-title>
-				      </v-list-tile>
+				      </v-list-tile></nuxt-link>
 				       <v-list-tile
 				          @click=""
 				        >

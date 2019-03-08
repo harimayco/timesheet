@@ -24,7 +24,7 @@
       <td>{{ props.item.name }}</td>
       <td >{{ props.item.email }}</td>
       <td >{{ props.item.type }}</td>
-      <td >{{ props.item.phone }}</td>
+      <td >{{ props.item.notelepon }}</td>
       <td ><a :href="'/staff-list/latest-projects/' + props.item.id" >Detail</a></td>
     </template>
     <v-alert v-slot:no-results :value="true" color="error" icon="warning">

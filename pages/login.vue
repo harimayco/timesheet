@@ -26,9 +26,8 @@
                           type="password"
                           required
                         ></v-text-field>
-                        <v-layout justify-space-between>
-                            <v-btn type="submit" class='blue darken-4 white--text'>Login</v-btn>
-                           
+                        <v-layout>
+                            <v-btn :loading="loading" type="submit" color="primary" dark><v-icon left dark small>lock</v-icon>Login</v-btn>          
                         </v-layout>
                         
                       </v-form>
@@ -46,11 +45,12 @@ export default {
     return {
       email: 'rendy@avasoft.net',
       password: 'Zxcv1234!',
-      
+      loading: false
     }
   },
   methods: {
     async checkLogin() {
+      this.loading = true;
       this.$nuxt.$loading.start()
       return this.$auth
         .loginWith('local', {
@@ -60,7 +60,7 @@ export default {
           }
         })
         .catch(e => {
-          
+          this.loading= false
         })
     }
   }

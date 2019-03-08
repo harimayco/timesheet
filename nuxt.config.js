@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const baseApiUrl = 'http://192.168.1.101:8000';
+const baseApiUrl = 'http://192.168.43.237:8000';
 const appName = 'Timesheet';
 
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
@@ -63,7 +63,7 @@ module.exports = {
   ],
 
   toast: {
-      position: 'top-center',
+      position: 'bottom-center',
       duration: '3500',
       singleton: true
   },
