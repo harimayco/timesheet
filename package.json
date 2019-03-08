@@ -15,6 +15,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/localtunnel": "^1.1.0",
     "@nuxtjs/pwa": "^2.6.0",
+    "@nuxtjs/toast": "^3.0.2",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
     "vuetify": "^1.5.0",
@@ -24,5 +25,10 @@
     "nodemon": "^1.18.9",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0"
+    }
   }
 }

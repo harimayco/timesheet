@@ -30,12 +30,7 @@
                             <v-btn type="submit" class='blue darken-4 white--text'>Login</v-btn>
                            
                         </v-layout>
-                         <v-alert v-if="error"
-                      :value="true"
-                      type="error" 
-                    >
-                      {{ error + '' }}
-                    </v-alert>
+                        
                       </v-form>
                   </div>
                 </v-card-text>
@@ -51,12 +46,12 @@ export default {
     return {
       email: 'rendy@avasoft.net',
       password: 'Zxcv1234!',
-      error: null
+      
     }
   },
   methods: {
     async checkLogin() {
-      this.error = null
+      this.$nuxt.$loading.start()
       return this.$auth
         .loginWith('local', {
           data: {
@@ -65,7 +60,7 @@ export default {
           }
         })
         .catch(e => {
-          this.error = 'Invalid username or password!'
+          
         })
     }
   }

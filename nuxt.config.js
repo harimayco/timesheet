@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const baseApiUrl = 'http://timesheet-api.local';
+const baseApiUrl = 'http://192.168.1.101:8000';
 const appName = 'Timesheet';
 
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
@@ -58,8 +58,15 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
+
+  toast: {
+      position: 'top-center',
+      duration: '3500',
+      singleton: true
+  },
 
   auth: {
     redirect: {
@@ -75,7 +82,9 @@ module.exports = {
           user: { url: '/users/me', method: 'get', propertyName: false }
         },
       }
-    }
+    },
+    plugins: [ '~/plugins/auth.js' ],
+    resetOnError: true
   },
 
   /*
