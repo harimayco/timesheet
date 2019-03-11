@@ -72,7 +72,7 @@ export default {
   },
   head() {
     return{
-      title: 'Staff List - ' + process.env.appName
+      title: 'Staff List - ' + process.env.APP_NAME
     }
   }
 }

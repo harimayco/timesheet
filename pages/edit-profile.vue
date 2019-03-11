@@ -64,7 +64,7 @@ export default {
 	},
 	  head() {
 	    return{
-	      title: 'Edit Profile - ' + process.env.appName
+	      title: 'Edit Profile - ' + process.env.APP_NAME
 	    }
 	  }
 

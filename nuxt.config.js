@@ -1,15 +1,10 @@
 const pkg = require('./package')
-const baseApiUrl = 'http://192.168.43.237:8000';
-const appName = 'Timesheet';
+require('dotenv').config()
 
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
   mode: 'universal',
-  env: {
-    baseApiUrl: baseApiUrl,
-    appName: appName
-  },
 
   /*
   ** Headers of the page
@@ -60,6 +55,7 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
     '@nuxtjs/toast',
+    '@nuxtjs/dotenv',
   ],
 
   toast: {
@@ -91,7 +87,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: baseApiUrl
+    baseURL: process.env.BASE_API_URL
   },
 
   /*
